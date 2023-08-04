@@ -1,9 +1,7 @@
-import "../styles/aboutStyles.css";
-
-export const About = () => {
+export const Projects = () => {
   return (
-    <div>
-      <div className="inner-title">ACERCA DE</div>
+    <div className="title-container">
+      <div className="inner-title">Projects</div>
       <div className="inner-subtitle">
         <p style={{ fontSize: "3vw" }}>¡Hola! Bienvenido/a a mi portfolio.</p>
         <p>

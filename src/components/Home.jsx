@@ -11,6 +11,9 @@ import "../styles/backgroundChanger.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setColor } from "../store/color";
 import { About } from "./About";
+import { Skills } from "./Skills";
+import { Projects } from "./Projects";
+import { Contact } from "./Contact";
 
 const BackgroundChanger = () => {
   const dispatch = useDispatch();
@@ -125,7 +128,7 @@ const BackgroundChanger = () => {
         </div>
       </nav>
 
-      {currentBackground === backgroundImage2 || backgroundImage1 ? (
+      {currentBackground !== backgroundImage2 || backgroundImage1 ? (
         <div
           className="border"
           style={{
@@ -135,7 +138,10 @@ const BackgroundChanger = () => {
             border: `${color} solid 10px`,
           }}
         >
-          <About />
+          {currentBackground === backgroundImage2 && <About />}
+          {currentBackground === backgroundImage3 && <Skills />}
+          {currentBackground === backgroundImage4 && <Projects />}
+          {currentBackground === backgroundImage5 && <Contact />}
         </div>
       ) : (
         ""

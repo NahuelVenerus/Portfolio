@@ -8,10 +8,10 @@ const HomeArrow = () => {
     <AiFillHome
       style={{
         cursor: "pointer",
-        border: "10px solid",
+        border: "1vw solid",
         borderRadius: "100%",
         padding: "0.5%",
-        fontSize: "60px",
+        fontSize: "5vw",
         position: "fixed",
         bottom: "5%",
         right: "2%",
