@@ -27,6 +27,12 @@ const BackgroundChanger = () => {
     setCurrentBackground(newBackground);
   };
 
+  const handleNavbarClick = () => {
+    setNavbarPosition("75%");
+    setBorderTop("60%");
+    setTop("-50%");
+  };
+
   useEffect(() => {
     dispatch(setColor("pink"));
   }, [dispatch]);
@@ -62,29 +68,17 @@ const BackgroundChanger = () => {
         ""
       )}
       <nav className="navbar" style={{ bottom: navbarPosition }}>
-        <div
-          onClick={() => {
-            setTop("-50%");
-            setNavbarPosition("75%");
-            setBorderTop("60%");
-          }}
-        >
+        <div onClick={handleNavbarClick}>
           <NavbarName
             icon={<IoIosArrowForward />}
             image={backgroundImage2}
             newBackground={handleBackgroundChange}
             newColor="#E97979"
-            title="ACERCA DE"
+            title="ABOUT"
             currentBackground={currentBackground}
           />
         </div>
-        <div
-          onClick={() => {
-            setTop("-50%");
-            setNavbarPosition("75%");
-            setBorderTop("60%");
-          }}
-        >
+        <div onClick={handleNavbarClick}>
           <NavbarName
             icon={<IoIosArrowForward />}
             image={backgroundImage3}
@@ -94,13 +88,7 @@ const BackgroundChanger = () => {
             currentBackground={currentBackground}
           />
         </div>
-        <div
-          onClick={() => {
-            setTop("-50%");
-            setNavbarPosition("75%");
-            setBorderTop("60%");
-          }}
-        >
+        <div onClick={handleNavbarClick}>
           <NavbarName
             icon={<IoIosArrowForward />}
             image={backgroundImage4}
@@ -110,13 +98,7 @@ const BackgroundChanger = () => {
             currentBackground={currentBackground}
           />
         </div>
-        <div
-          onClick={() => {
-            setTop("-50%");
-            setNavbarPosition("75%");
-            setBorderTop("60%");
-          }}
-        >
+        <div onClick={handleNavbarClick}>
           <NavbarName
             icon={<IoIosArrowForward />}
             image={backgroundImage5}
