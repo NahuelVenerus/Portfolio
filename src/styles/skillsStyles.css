@@ -1,8 +1,7 @@
 .skills-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;  
-  gap: 10vw;
-  
+  gap: 10vw;  
 }
 
 .skill-subtitle{
@@ -21,4 +20,18 @@
 .skill-icon{
   margin-right: 1vw;
   margin-top: 1vw;
+}
+
+@media screen and (max-width: 500px) {
+  .skills-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .skill-subtitle {
+    font-size: 4vw;
+  }
+
+  .skill-icon {
+    font-size: 8vw;
+  }
 }

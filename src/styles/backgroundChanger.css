@@ -23,13 +23,13 @@
 
 .title{
 color: pink;
-font-size: 10vw;
+font-size: 10vmin;
 padding-left: 5%;
 }
 
 .subtitle{
   color: pink;
-  font-size: 5vw;
+  font-size: 5vmin;
   padding-left: 5.2%;
 }
 
@@ -37,7 +37,6 @@ padding-left: 5%;
   position: absolute;
   display: flex;
   color: pink;
-  font-size: 10vw;
   cursor: pointer;
   z-index: 1;
   text-decoration: none;
@@ -45,7 +44,7 @@ padding-left: 5%;
 }
 
 .navbar span {
-  font-size: 2.9vw;
+  font-size: 3vw;
   text-transform: uppercase;
   position: relative;
   transition: 1s;
@@ -81,8 +80,34 @@ padding-left: 5%;
   transition: 0.5s;
 }
 
-.navbar.top {
-  top: 0;
-  bottom: auto;
-  transition: top 0.5s ease;
+@media screen and (max-width: 1000px) {
+  .title{
+    top: 50%;
+  }
+  .subtitle{
+    top: 50%;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20%;
+  }
+
+  .navbar span {
+    font-size: 4vw;
+    text-transform: uppercase;
+    position: relative;
+    transition: 1s;
+    margin: 3vw;
+    text-shadow: 0 0 10px pink, 0 0 20px pink, 0 0 30px pink;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
 }

@@ -3,7 +3,7 @@ import "../styles/aboutStyles.css";
 export const About = () => {
   return (
     <>
-      <div className="inner-title">ACERCA DE</div>
+      <div className="inner-title">ABOUT</div>
       <div className="inner-subtitle">
         <p>¡Hola! Bienvenido/a a mi portfolio.</p>
         <p>
