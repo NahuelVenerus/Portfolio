@@ -1,67 +1,78 @@
-import { useState } from "react";
+import React from "react";
 import "../styles/contactStyles.css";
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
+import { MdContactPage, MdOutlineWhatsapp } from "react-icons/md";
+import Gmail_Logo from "../assets/Gmail_Logo.svg";
 
 export const Contact = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-    setFormData({
-      email: "",
-      subject: "",
-      message: "",
-    });
+  const copyToClipboard = () => {
+    const email = "nahuelvenerus@gmail.com";
+    navigator.clipboard.writeText(email);
+    alert("Dirección de correo copiada al portapapeles: " + email);
   };
 
   return (
-    <div className="title-container">
+    <div>
       <div className="inner-title">CONTACTAME</div>
-      <div className="inner-subtitle">
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
+      <div className="icon-container">
+        <span>
+          <a
+            href="https://www.linkedin.com/in/nahuel-venerus/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="icon-wrapper linkedin">
+              <AiFillLinkedin className="icon" />
+              <div className="icon-text">LinkedIn</div>
+            </div>
+          </a>
+        </span>
+        <span>
+          <div className="icon-wrapper gmail">
+            <button className="gmail-button" onClick={copyToClipboard}>
+              <img alt="gmail" src={Gmail_Logo} className="gmail-icon" />
+            </button>
+            <div className="icon-text">Gmail</div>
           </div>
-          <div>
-            <label>Subject:</label>
-            <input
-              type="text"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Message:</label>
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+        </span>
+        <span>
+          <a
+            href="https://www.github.com/NahuelVenerus"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="icon-wrapper github">
+              <AiFillGithub className="icon" />
+              <div style={{ color: "white" }} className="icon-text">
+                Github
+              </div>
+            </div>
+          </a>
+        </span>
+        <span>
+          <a
+            href="https://www.canva.com/design/DAFtC0ZPX7c/d2NPBcX5C4DrM2uXFSVPgw/view?website#1:espa-ol"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="icon-wrapper resume">
+              <MdContactPage className="icon" />
+              <div className="icon-text">CV</div>
+            </div>
+          </a>
+        </span>
+        <span>
+          <a
+            href="https://wa.me/5491136441633"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="icon-wrapper whatsapp">
+              <MdOutlineWhatsapp className="icon" />
+              <div className="icon-text">WhatsApp</div>
+            </div>
+          </a>
+        </span>
       </div>
     </div>
   );
