@@ -1,14 +1,28 @@
 import React from "react";
 import "../styles/contactStyles.css";
-import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
-import { MdContactPage, MdOutlineWhatsapp } from "react-icons/md";
+import { AiFillLinkedin, AiFillGithub, AiOutlineCheck } from "react-icons/ai";
+import {
+  MdContactPage,
+  MdOutlineWhatsapp,
+  MdOutlinePhone,
+} from "react-icons/md";
 import Gmail_Logo from "../assets/Gmail_Logo.svg";
+import Swal from "sweetalert2";
 
 export const Contact = () => {
-  const copyToClipboard = () => {
-    const email = "nahuelvenerus@gmail.com";
-    navigator.clipboard.writeText(email);
-    alert("Dirección de correo copiada al portapapeles: " + email);
+  const copyToClipboard = (isMail) => {
+    let toShare = "nahuelvenerus@gmail.com";
+    let color = "red";
+    if (!isMail) {
+      toShare = "1136441633";
+      color = "#AF64DB";
+    }
+    navigator.clipboard.writeText(toShare);
+    Swal.fire({
+      icon: "success",
+      title: `Copiado </br><span style="color: ${color};">${toShare}</span></br> correctamente al portapapeles!`,
+      confirmButtonText: `Genial!`,
+    });
   };
 
   return (
@@ -22,16 +36,17 @@ export const Contact = () => {
             rel="noreferrer"
           >
             <div className="icon-wrapper linkedin">
-              <AiFillLinkedin className="icon" />
+              <AiFillLinkedin className="contact-icon" />
               <div className="icon-text">LinkedIn</div>
             </div>
           </a>
         </span>
         <span>
-          <div className="icon-wrapper gmail">
-            <button className="gmail-button" onClick={copyToClipboard}>
-              <img alt="gmail" src={Gmail_Logo} className="gmail-icon" />
-            </button>
+          <div
+            className="icon-wrapper gmail"
+            onClick={() => copyToClipboard(true)}
+          >
+            <img alt="gmail" src={Gmail_Logo} className="gmail-icon" />
             <div className="icon-text">Gmail</div>
           </div>
         </span>
@@ -42,7 +57,7 @@ export const Contact = () => {
             rel="noreferrer"
           >
             <div className="icon-wrapper github">
-              <AiFillGithub className="icon" />
+              <AiFillGithub className="contact-icon" />
               <div style={{ color: "white" }} className="icon-text">
                 Github
               </div>
@@ -56,7 +71,7 @@ export const Contact = () => {
             rel="noreferrer"
           >
             <div className="icon-wrapper resume">
-              <MdContactPage className="icon" />
+              <MdContactPage className="contact-icon" />
               <div className="icon-text">CV</div>
             </div>
           </a>
@@ -68,10 +83,19 @@ export const Contact = () => {
             rel="noreferrer"
           >
             <div className="icon-wrapper whatsapp">
-              <MdOutlineWhatsapp className="icon" />
+              <MdOutlineWhatsapp className="contact-icon" />
               <div className="icon-text">WhatsApp</div>
             </div>
           </a>
+        </span>
+        <span>
+          <div
+            className="icon-wrapper phone"
+            onClick={() => copyToClipboard(false)}
+          >
+            <MdOutlinePhone className="contact-icon" />
+            <div className="icon-text">Número</div>
+          </div>
         </span>
       </div>
     </div>
