@@ -34,9 +34,11 @@ const BackgroundChanger = () => {
     setNavbarPosition("75%");
     setBorderTop("60%");
     setTop("-50%");
-    setIsHidden(true);
-    setTimeout(() => setCurrentContent(content), 500);
-    setTimeout(() => setIsHidden(false), 1000);
+    if (currentContent !== content) {
+      setIsHidden(true);
+      setTimeout(() => setCurrentContent(content), 500);
+      setTimeout(() => setIsHidden(false), 1000);
+    }
   };
 
   useEffect(() => {
@@ -66,6 +68,7 @@ const BackgroundChanger = () => {
             setNavbarPosition(0);
             setTop("10%");
             setBorderTop("140%");
+            setTimeout(() => setCurrentContent(""), 1000);
           }}
         >
           <HomeArrow />

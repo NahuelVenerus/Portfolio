@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import "../styles/aboutStyles.css";
+import "../styles/swiperStyles.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SwiperSlide from "../commons/SwiperSlide";
-import "../styles/swiperStyles.css";
-import "../styles/aboutStyles.css";
+import React, { useEffect, useState } from "react";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 const ClubDelPlan = require("../assets/ClubDelPlan.png");
 const GeekCentralStore = require("../assets/GeekCentralStore.png");
@@ -41,12 +42,15 @@ export const Projects = () => {
   ];
 
   const settings = {
-    className: "center",
+    className: "swiper",
     centerMode: true,
     infinite: false,
     centerPadding: "60px",
     slidesToShow: 1,
     speed: 500,
+    useCSS: true,
+    prevArrow: <IoIosArrowBack color="#86CC7B" />,
+    nextArrow: <IoIosArrowForward color="#86CC7B" />,
   };
 
   return (
