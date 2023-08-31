@@ -1,0 +1,44 @@
+.border {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid;
+  border-radius: 20px;
+  height: 70%;
+  width: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 1.5s ease;  
+}
+
+.top-section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: top 1.5s ease;
+}
+
+.title{
+color: pink;
+font-size: 10vmin;
+padding-left: 5%;
+}
+
+.subtitle{
+  color: pink;
+  font-size: 5vmin;
+  padding-left: 5.2%;
+}
+
+.transparent {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.not-transparent {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
