@@ -1,8 +1,8 @@
-import backgroundImage1 from "../assets/pink_background.png";
-import backgroundImage2 from "../assets/red_background.png";
-import backgroundImage3 from "../assets/blue_background.png";
-import backgroundImage4 from "../assets/green_background.png";
-import backgroundImage5 from "../assets/black_background.png";
+// import backgroundImage1 from "../assets/pink_background.png";
+// import backgroundImage2 from "../assets/red_background.png";
+// import backgroundImage3 from "../assets/blue_background.png";
+// import backgroundImage4 from "../assets/green_background.png";
+// import backgroundImage5 from "../assets/black_background.png";
 import React, { useEffect, useState } from "react";
 import { NavbarName } from "../commons/NavbarName";
 import { IoIosArrowForward } from "react-icons/io";
@@ -15,6 +15,19 @@ import { About } from "./About";
 import { Skills } from "./Skills";
 import { Projects } from "./Projects";
 import { Contact } from "./Contact";
+import { Cloudinary } from "@cloudinary/url-gen";
+
+new Cloudinary({ cloud: { cloudName: "db3pcwsrm" } });
+const backgroundImage1 =
+  "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515045/Portfolio/pink_background.png";
+const backgroundImage2 =
+  "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/red_background.png";
+const backgroundImage3 =
+  "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/blue_background.png";
+const backgroundImage4 =
+  "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/green_background.png";
+const backgroundImage5 =
+  "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/black_background.png";
 
 const BackgroundChanger = () => {
   const dispatch = useDispatch();
@@ -37,7 +50,7 @@ const BackgroundChanger = () => {
     if (currentContent !== content) {
       setIsHidden(true);
       setTimeout(() => setCurrentContent(content), 500);
-      setTimeout(() => setIsHidden(false), 1000);
+      setTimeout(() => setIsHidden(false), 500);
     }
   };
 
@@ -119,7 +132,8 @@ const BackgroundChanger = () => {
         </div>
       </nav>
 
-      {currentBackground !== backgroundImage2 || backgroundImage1 ? (
+      {currentBackground !== backgroundImage2 ||
+      currentBackground !== backgroundImage1 ? (
         <div
           className="border"
           style={{
