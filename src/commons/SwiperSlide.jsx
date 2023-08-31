@@ -22,6 +22,7 @@ const SwiperSlide = ({ image }) => {
       >
         <a href={image.link} target="_blank" rel="noopener noreferrer">
           <img
+            style={{ zIndex: "-1" }}
             src={image.image}
             alt="Project Slide"
             // style={{

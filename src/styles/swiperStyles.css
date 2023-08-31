@@ -8,26 +8,24 @@
   max-height: 400px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
 }
 
 .swiperImage {
+  z-index: 0;
   max-width: 100%;
   max-height: 100%;
 }
 
 .swiper {   
-  width: 50vw;
+  width: 50vw;    
 }
-
 
 @media screen and (max-width: 500px) {
   .swiperBorder {
     border: 0.2vw solid;
     border-radius: 1vw;
     overflow: hidden;
-    min-height: 200px;
-    min-width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,13 +34,7 @@
     z-index: 9999;
     position: relative;
   }
-  .swiperImage{
-    min-height: 200px;
-    min-width: 150px;
-    z-index: 0;
-    position: relative;
-  }
-  .swiper {   
-    width: 75vw;
+  .swiper {
+    width: 70vw;    
   }
 }
