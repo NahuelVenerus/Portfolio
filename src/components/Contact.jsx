@@ -28,10 +28,8 @@ export const Contact = () => {
           </a>
         </span>
         <span>
-          <div className="icon-wrapper gmail">
-            <button className="gmail-button" onClick={copyToClipboard}>
-              <img alt="gmail" src={Gmail_Logo} className="gmail-icon" />
-            </button>
+          <div className="icon-wrapper gmail" onClick={copyToClipboard}>
+            <img alt="gmail" src={Gmail_Logo} className="gmail-icon" />
             <div className="icon-text">Gmail</div>
           </div>
         </span>

@@ -68,7 +68,7 @@ const BackgroundChanger = () => {
             setNavbarPosition(0);
             setTop("10%");
             setBorderTop("140%");
-            setTimeout(() => setCurrentContent(""), 1000);
+            setTimeout(() => setCurrentContent(""), 500);
           }}
         >
           <HomeArrow />
