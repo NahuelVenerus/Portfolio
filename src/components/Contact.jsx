@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/contactStyles.css";
-import { AiFillLinkedin, AiFillGithub, AiOutlineCheck } from "react-icons/ai";
+import { AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import {
   MdContactPage,
   MdOutlineWhatsapp,
