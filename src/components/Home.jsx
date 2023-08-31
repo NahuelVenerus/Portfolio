@@ -8,6 +8,7 @@ import { NavbarName } from "../commons/NavbarName";
 import { IoIosArrowForward } from "react-icons/io";
 import HomeArrow from "../commons/HomeArrow";
 import "../styles/backgroundChanger.css";
+import "../styles/containerStyles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setColor } from "../store/color";
 import { About } from "./About";
@@ -21,16 +22,21 @@ const BackgroundChanger = () => {
   const [currentBackground, setCurrentBackground] = useState(backgroundImage1);
   const [navbarPosition, setNavbarPosition] = useState(0);
   const [top, setTop] = useState("10%");
-  const [borderTop, setBorderTop] = useState("-50%");
+  const [borderTop, setBorderTop] = useState("140%");
+  const [isHidden, setIsHidden] = useState(true);
+  const [currentContent, setCurrentContent] = useState("");
 
   const handleBackgroundChange = (newBackground) => {
     setCurrentBackground(newBackground);
   };
 
-  const handleNavbarClick = () => {
+  const handleNavbarClick = (content) => {
     setNavbarPosition("75%");
     setBorderTop("60%");
     setTop("-50%");
+    setIsHidden(true);
+    setTimeout(() => setCurrentContent(content), 500);
+    setTimeout(() => setIsHidden(false), 1000);
   };
 
   useEffect(() => {
@@ -59,7 +65,7 @@ const BackgroundChanger = () => {
             handleBackgroundChange(backgroundImage1);
             setNavbarPosition(0);
             setTop("10%");
-            setBorderTop("-50%");
+            setBorderTop("140%");
           }}
         >
           <HomeArrow />
@@ -68,7 +74,7 @@ const BackgroundChanger = () => {
         ""
       )}
       <nav className="navbar" style={{ bottom: navbarPosition }}>
-        <div onClick={handleNavbarClick}>
+        <div onClick={() => handleNavbarClick("About")}>
           <NavbarName
             icon={<IoIosArrowForward />}
             image={backgroundImage2}
@@ -78,7 +84,7 @@ const BackgroundChanger = () => {
             currentBackground={currentBackground}
           />
         </div>
-        <div onClick={handleNavbarClick}>
+        <div onClick={() => handleNavbarClick("Skills")}>
           <NavbarName
             icon={<IoIosArrowForward />}
             image={backgroundImage3}
@@ -88,7 +94,7 @@ const BackgroundChanger = () => {
             currentBackground={currentBackground}
           />
         </div>
-        <div onClick={handleNavbarClick}>
+        <div onClick={() => handleNavbarClick("Projects")}>
           <NavbarName
             icon={<IoIosArrowForward />}
             image={backgroundImage4}
@@ -98,7 +104,7 @@ const BackgroundChanger = () => {
             currentBackground={currentBackground}
           />
         </div>
-        <div onClick={handleNavbarClick}>
+        <div onClick={() => handleNavbarClick("Contact")}>
           <NavbarName
             icon={<IoIosArrowForward />}
             image={backgroundImage5}
@@ -114,16 +120,18 @@ const BackgroundChanger = () => {
         <div
           className="border"
           style={{
-            transition: "1s ease",
+            transition: "1.5s ease",
             top: borderTop,
             color: color,
             border: `${color} solid 10px`,
           }}
         >
-          {currentBackground === backgroundImage2 && <About />}
-          {currentBackground === backgroundImage3 && <Skills />}
-          {currentBackground === backgroundImage4 && <Projects />}
-          {currentBackground === backgroundImage5 && <Contact />}
+          <div className={`${isHidden ? "transparent" : "not-transparent"}`}>
+            {currentContent === "About" && <About />}
+            {currentContent === "Skills" && <Skills />}
+            {currentContent === "Projects" && <Projects />}
+            {currentContent === "Contact" && <Contact />}
+          </div>
         </div>
       ) : (
         ""
