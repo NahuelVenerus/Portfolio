@@ -1,8 +1,3 @@
-// import backgroundImage1 from "../assets/pink_background.png";
-// import backgroundImage2 from "../assets/red_background.png";
-// import backgroundImage3 from "../assets/blue_background.png";
-// import backgroundImage4 from "../assets/green_background.png";
-// import backgroundImage5 from "../assets/black_background.png";
 import React, { useEffect, useState } from "react";
 import { NavbarName } from "../commons/NavbarName";
 import { IoIosArrowForward } from "react-icons/io";
@@ -18,15 +13,15 @@ import { Contact } from "./Contact";
 import { Cloudinary } from "@cloudinary/url-gen";
 
 new Cloudinary({ cloud: { cloudName: "db3pcwsrm" } });
-const backgroundImage1 =
+let backgroundImage1 =
   "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515045/Portfolio/pink_background.png";
-const backgroundImage2 =
+let backgroundImage2 =
   "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/red_background.png";
-const backgroundImage3 =
+let backgroundImage3 =
   "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/blue_background.png";
-const backgroundImage4 =
+let backgroundImage4 =
   "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/green_background.png";
-const backgroundImage5 =
+let backgroundImage5 =
   "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/black_background.png";
 
 const BackgroundChanger = () => {
@@ -38,6 +33,19 @@ const BackgroundChanger = () => {
   const [borderTop, setBorderTop] = useState("140%");
   const [isHidden, setIsHidden] = useState(true);
   const [currentContent, setCurrentContent] = useState("");
+
+  const loadImages = () => {
+    backgroundImage1 =
+      "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515045/Portfolio/pink_background.png";
+    backgroundImage2 =
+      "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/red_background.png";
+    backgroundImage3 =
+      "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/blue_background.png";
+    backgroundImage4 =
+      "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/green_background.png";
+    backgroundImage5 =
+      "https://res.cloudinary.com/db3pcwsrm/image/upload/v1693515044/Portfolio/black_background.png";
+  };
 
   const handleBackgroundChange = (newBackground) => {
     setCurrentBackground(newBackground);
@@ -57,6 +65,10 @@ const BackgroundChanger = () => {
   useEffect(() => {
     dispatch(setColor("pink"));
   }, [dispatch]);
+
+  useEffect(() => {
+    loadImages();
+  }, []);
 
   return (
     <div
