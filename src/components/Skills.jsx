@@ -1,82 +1,46 @@
 import React from "react";
-import {
-  TbBrandReactNative,
-  TbBrandRedux,
-  TbBrandNextjs,
-  TbBrandBootstrap,
-  TbBrandTailwind,
-  TbBrandMongodb,
-  TbBrandJavascript,
-  TbBrandTypescript,
-  TbBrandDocker,
-} from "react-icons/tb";
+import {TbBrandReactNative, TbBrandRedux, TbBrandNextjs, TbBrandBootstrap, TbBrandTailwind, TbBrandMongodb, TbBrandJavascript, TbBrandTypescript, TbBrandDocker,} from "react-icons/tb";
 import { FaNodeJs, FaJava } from "react-icons/fa";
 import { DiScrum } from "react-icons/di";
-import {
-  SiAxios,
-  SiSequelize,
-  SiPostgresql,
-  SiJsonwebtokens,
-  SiExpress,
-  SiAmazonaws,
-} from "react-icons/si";
+import {SiAxios, SiSequelize, SiPostgresql, SiJsonwebtokens, SiExpress, SiAmazonaws} from "react-icons/si";
 import "../styles/skillsStyles.css";
 import "../styles/aboutStyles.css";
-import SkillRow from "../commons/SkillRow";
+import { exportDictionary } from "../dictionary"
+import { SkillColumn } from "../commons/SkillColumn";
 
-export const Skills = () => {
+export const Skills = ({ lang: lang, isHidden: isHidden }) => {
+  const column1 = [
+    {icon: TbBrandReactNative, name: "React-Native"}, 
+    {icon: TbBrandRedux, name: "Redux"}, 
+    {icon: TbBrandNextjs, name: "NextJs"}, 
+    {icon: SiAxios, name: "Axios"}, 
+    {icon: TbBrandBootstrap, name: "Bootstrap"}, 
+    {icon: TbBrandTailwind, name: "Tailwind"}];
+  const column2 = [
+    {icon: FaNodeJs, name: "NodeJs"}, 
+    {icon: SiSequelize, name: "Sequelize"}, 
+    {icon: SiPostgresql, name: "PosgreSQL"}, 
+    {icon: TbBrandMongodb, name: "MongoDB"}, 
+    {icon: SiExpress, name: "Express"}, 
+    {icon: SiJsonwebtokens, name: "JWT"}];
+  const column3 = [
+    {icon: TbBrandJavascript, name: "Javascript"}, 
+    {icon: TbBrandTypescript, name: "Typescript"}, 
+    {icon: FaJava, name: "Java"}, 
+    {icon: TbBrandDocker, name: "Docker"}, 
+    {icon: SiAmazonaws, name: "AWS"}, 
+    {icon: DiScrum, name: "SCRUM"}
+  ]
   return (
-    <>
-      <div className="inner-title">SKILLS</div>
+    <div style={{ opacity: isHidden, transition: "all 1s ease" }}>
+      <h1 className="inner-title">{exportDictionary(lang, "skills")}</h1>
       <div className="inner-subtitle">
         <div className="skills-container">
-          <div className="skill-subtitle">Front</div>
-          <div className="skill-subtitle">Back</div>
-          <div className="skill-subtitle">Tecnologías</div>
-        </div>
-        <div className="skills-container">
-          <div className="skill-column">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <SkillRow icon={TbBrandReactNative} name="React-Native" />
-              <SkillRow icon={TbBrandRedux} name="Redux" />
-              <SkillRow icon={TbBrandNextjs} name="NextJs" />
-              <SkillRow icon={SiAxios} name="Axios" />
-              <SkillRow icon={TbBrandBootstrap} name="Bootstrap" />
-              <SkillRow icon={TbBrandTailwind} name="Tailwind" />
-            </div>
-          </div>
-          <div className="skill-column">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <SkillRow icon={FaNodeJs} name={"NodeJs"} />
-              <SkillRow icon={SiSequelize} name={"Sequelize"} />
-              <SkillRow icon={SiPostgresql} name={"PosgreSQL"} />
-              <SkillRow icon={TbBrandMongodb} name={"MongoDB"} />
-              <SkillRow icon={SiExpress} name={"Express"} />
-              <SkillRow icon={SiJsonwebtokens} name={"JWT"} />
-            </div>
-          </div>
-          <div className="skill-column">
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <SkillRow icon={TbBrandJavascript} name={"Javascript"} />
-              <SkillRow icon={TbBrandTypescript} name={"Typescript"} />
-              <SkillRow icon={FaJava} name={"Java"} />
-              <SkillRow icon={TbBrandDocker} name={"Docker"} />
-              <SkillRow icon={SiAmazonaws} name={"AWS"} />
-              <SkillRow icon={DiScrum} name={"SCRUM"} />
-            </div>
-          </div>
+          <SkillColumn title="FRONT" techList={column1}/>
+          <SkillColumn title="BACK" techList={column2}/>
+          <SkillColumn title={exportDictionary(lang, "techs")} techList={column3}/>
         </div>
       </div>
-    </>
+    </div>
   );
 };

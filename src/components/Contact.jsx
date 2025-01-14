@@ -8,8 +8,9 @@ import {
 } from "react-icons/md";
 import Gmail_Logo from "../assets/Gmail_Logo.svg";
 import Swal from "sweetalert2";
+import { exportDictionary } from "../dictionary";
 
-export const Contact = () => {
+export const Contact = ({lang: lang, isHidden: isHidden}) => {
   const copyToClipboard = (isMail) => {
     let toShare = "nahuelvenerus@gmail.com";
     let color = "red";
@@ -26,9 +27,9 @@ export const Contact = () => {
   };
 
   return (
-    <div>
-      <div className="inner-title">CONTACTAME</div>
-      <div className="icon-container">
+    <div style={{opacity: isHidden, transition: "all 1s ease" }}>
+      <h1 className="inner-title">{exportDictionary(lang, "contact")}</h1>
+      <div className="icon-container" >
         <span>
           <a
             href="https://www.linkedin.com/in/nahuel-venerus/"
