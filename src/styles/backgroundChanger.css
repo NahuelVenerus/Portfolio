@@ -2,27 +2,30 @@ body {
   overflow: hidden;
 }
 
+.transition {
+  transition: all 1s ease;
+}
+
 .navbar {
-  position: absolute;
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
   color: pink;
-  cursor: pointer;
   z-index: 1;
   text-decoration: none;
-  transition: 1.5s ease;
 }
 
 .navbar span {
   font-size: 3vw;
-  text-transform: uppercase;
   position: relative;
   transition: 1s;
-  margin: 5vw;
   text-shadow: 0 0 10px pink, 0 0 20px pink, 0 0 30px pink;
   display: flex;
   align-items: center;
   letter-spacing: 1px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .navbar span:hover {
@@ -31,6 +34,8 @@ body {
 }
 
 .icon {
+  display: flex;
+  align-items: center;
   font-size: 5vw;
   transition: transform 0.5s ease;
 }
@@ -49,7 +54,7 @@ body {
   transition: 0.5s;
 }
 
-@media screen and (max-width: 1000px) {
+/* @media screen and (max-width: 1000px) {
   .title{
     top: 50%;
   }
@@ -57,9 +62,9 @@ body {
     top: 50%;
   }
   
-}
+} */
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .navbar {
     display: flex;
     justify-content: center;
@@ -79,4 +84,4 @@ body {
     letter-spacing: 1.5px;
     text-transform: uppercase;
   }
-}
+} */

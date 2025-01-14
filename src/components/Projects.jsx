@@ -6,13 +6,14 @@ import "slick-carousel/slick/slick-theme.css";
 import SwiperSlide from "../commons/SwiperSlide";
 import React, { useEffect, useState } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { exportDictionary } from "../dictionary";
 
 const ClubDelPlan = require("../assets/ClubDelPlan.png");
 const GeekCentralStore = require("../assets/GeekCentralStore.png");
 const ClubDelPlanMobile = require("../assets/ClubDelPlanMobile.png");
 const GeekCentralStoreMobile = require("../assets/GeekCentralStoreMobile.png");
 
-export const Projects = () => {
+export const Projects = ({lang: lang, isHidden: isHidden}) => {
   const [isMobile, setIsMobile] = useState(false);
 
   const handleResize = () => {
@@ -43,21 +44,20 @@ export const Projects = () => {
 
   const settings = {
     className: "swiper",
-    centerMode: true,
     infinite: false,
-    centerPadding: "60px",
-    slidesToShow: 1,
+    slidesToShow: 1.1,
     speed: 500,
     useCSS: true,
     prevArrow: <IoIosArrowBack color="#86CC7B" />,
     nextArrow: <IoIosArrowForward color="#86CC7B" />,
   };
+  
+  
 
   return (
-    <div>
-      <div className="inner-title">PROJECTS</div>
-      <div className="inner-subtitle"></div>
-      <div className="swiper">
+    <div className="swiper">
+      <h1 className="inner-title">{exportDictionary(lang, "projects")}</h1>
+      <div className="swiper-container">
         <Slider {...settings}>
           {images.map((image) => (
             <SwiperSlide image={image} key={image} />

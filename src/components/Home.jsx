@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavbarName } from "../commons/NavbarName";
 import { IoIosArrowForward } from "react-icons/io";
-import HomeArrow from "../commons/HomeArrow";
 import "../styles/backgroundChanger.css";
 import "../styles/containerStyles.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +10,7 @@ import { Skills } from "./Skills";
 import { Projects } from "./Projects";
 import { Contact } from "./Contact";
 import { Cloudinary } from "@cloudinary/url-gen";
+import { exportDictionary } from "../dictionary";
 
 new Cloudinary({ cloud: { cloudName: "db3pcwsrm" } });
 let backgroundImage1 =
@@ -28,11 +28,12 @@ const BackgroundChanger = () => {
   const dispatch = useDispatch();
   const color = useSelector((state) => state.color);
   const [currentBackground, setCurrentBackground] = useState(backgroundImage1);
-  const [navbarPosition, setNavbarPosition] = useState(0);
-  const [top, setTop] = useState("10%");
-  const [borderTop, setBorderTop] = useState("140%");
-  const [isHidden, setIsHidden] = useState(true);
+  const [top, setTop] = useState("85%");
+  const [isHidden, setIsHidden] = useState(1);
+  const [isNavbarHidden, setIsNavbarHidden] = useState(1);
   const [currentContent, setCurrentContent] = useState("");
+  const [subtitleInvisibility, setSubtitleInvisibility] = useState(1);
+  const [language, setLanguage] = useState("ES")
 
   const loadImages = () => {
     backgroundImage1 =
@@ -52,13 +53,52 @@ const BackgroundChanger = () => {
   };
 
   const handleNavbarClick = (content) => {
-    setNavbarPosition("75%");
-    setBorderTop("60%");
-    setTop("-50%");
+    setTop("20%");
+    setSubtitleInvisibility(0)
     if (currentContent !== content) {
-      setIsHidden(true);
+      setIsHidden(0);
       setTimeout(() => setCurrentContent(content), 500);
-      setTimeout(() => setIsHidden(false), 500);
+      setTimeout(() => setIsHidden(1), 800);
+    } else {
+      dispatch(setColor("pink"));
+      handleBackgroundChange(backgroundImage1);
+      setTop("85%");
+      setSubtitleInvisibility(1)
+      setTimeout(() => setCurrentContent(""), 1000);
+    }
+  };
+
+  const changeToSpanish = () => {
+    if (language !== "ES") {
+      setIsHidden(0);
+      setIsNavbarHidden(0);
+      setSubtitleInvisibility(0);
+      setTimeout(() => {
+        setLanguage("ES");
+        setTimeout(() => {
+          setIsHidden(1);
+          setIsNavbarHidden(1);
+          if(currentContent === "") setSubtitleInvisibility(1);
+        }, 500);
+      }, 1000);
+    }
+  };
+  
+  
+  
+  const changeToEnglish = () => {
+    if (language !== "EN") {
+      setIsHidden(0);
+      setIsNavbarHidden(0);
+      setSubtitleInvisibility(0);
+      setTimeout(() => {
+        setLanguage("EN");
+        setTimeout(() => {
+          setIsNavbarHidden(1);
+          setIsHidden(1);
+          if(currentContent === "") setSubtitleInvisibility(1);
+        }, 500);
+      }, 1000);
     }
   };
 
@@ -79,93 +119,73 @@ const BackgroundChanger = () => {
         transition: "background-image 1s ease",
         height: "100vh",
         width: "100vw",
+        overflow: "hidden"
       }}
     >
-      <div className="top-section" style={{ top: top }}>
-        <div className="title">NAHUEL VENERUS</div>
-        <div className="subtitle">FULL STACK DEVELOPER</div>
+      <div>
+        <div className="top-section">
+          <div className={currentBackground === backgroundImage1 ? "title transition" : "title-reduced transition"} style={{ color: color }}>NAHUEL VENERUS</div>
+          <div className="language-change"
+            style={{ transition: "all 1s ease", borderColor: color, color: color, transform: `scale(${currentBackground !== backgroundImage1 ? 0.8 : 1})` }}>
+            <span className={language === "ES" ? "language-change-selected" : ""} onClick={changeToSpanish} style={{ paddingRight: "10px", textShadow: language === "ES" ? `0 0 0.5px ${color}, 0 0 10px ${color}, 0 0 10px ${color}` : ""}}>ES</span> |
+            <span className={language === "EN" ? "language-change-selected" : ""} onClick={changeToEnglish} style={{ paddingLeft: "10px", textShadow: language === "EN" ? `0 0 0.5px ${color}, 0 0 10px ${color}, 0 0 10px ${color}` : ""}}>EN</span></div>
+        </div>
+        <div className="subtitle transition" style={{ opacity: subtitleInvisibility }}>{exportDictionary(language, "subtitle")}</div>
       </div>
-      {currentBackground !== backgroundImage1 ? (
-        <div
-          onClick={() => {
-            dispatch(setColor("pink"));
-            handleBackgroundChange(backgroundImage1);
-            setNavbarPosition(0);
-            setTop("10%");
-            setBorderTop("140%");
-            setTimeout(() => setCurrentContent(""), 500);
-          }}
-        >
-          <HomeArrow />
-        </div>
-      ) : (
-        ""
-      )}
-      <nav className="navbar" style={{ bottom: navbarPosition }}>
-        <div onClick={() => handleNavbarClick("About")}>
-          <NavbarName
-            icon={<IoIosArrowForward />}
-            image={backgroundImage2}
-            newBackground={handleBackgroundChange}
-            newColor="#E97979"
-            title="ABOUT"
-            currentBackground={currentBackground}
-          />
-        </div>
-        <div onClick={() => handleNavbarClick("Skills")}>
-          <NavbarName
-            icon={<IoIosArrowForward />}
-            image={backgroundImage3}
-            newBackground={handleBackgroundChange}
-            newColor="#B0A0FF"
-            title="SKILLS"
-            currentBackground={currentBackground}
-          />
-        </div>
-        <div onClick={() => handleNavbarClick("Projects")}>
-          <NavbarName
-            icon={<IoIosArrowForward />}
-            image={backgroundImage4}
-            newBackground={handleBackgroundChange}
-            newColor="#86CC7B"
-            title="PROYECTOS"
-            currentBackground={currentBackground}
-          />
-        </div>
-        <div onClick={() => handleNavbarClick("Contact")}>
-          <NavbarName
-            icon={<IoIosArrowForward />}
-            image={backgroundImage5}
-            newBackground={handleBackgroundChange}
-            newColor="white"
-            title="CONTACTO"
-            currentBackground={currentBackground}
-          />
-        </div>
-      </nav>
+      <section className="content-container transition" style={{ top: top, color: color }}>
+        <nav  style={{opacity: isNavbarHidden}} className="navbar transition">
+          <div onClick={() => handleNavbarClick("About")}>
+            <NavbarName
+              icon={<IoIosArrowForward />}
+              image={backgroundImage2}
+              newBackground={handleBackgroundChange}
+              newColor="#E97979"
+              title={exportDictionary(language, "about")}
+              currentBackground={currentBackground}
+            />
+          </div>
+          <div onClick={() => handleNavbarClick("Skills")}>
+            <NavbarName
+              icon={<IoIosArrowForward />}
+              image={backgroundImage3}
+              newBackground={handleBackgroundChange}
+              newColor="#B0A0FF"
+              title={exportDictionary(language, "skills")}
+              currentBackground={currentBackground}
+            />
+          </div>
+          <div onClick={() => handleNavbarClick("Projects")}>
+            <NavbarName
+              icon={<IoIosArrowForward />}
+              image={backgroundImage4}
+              newBackground={handleBackgroundChange}
+              newColor="#86CC7B"
+              title={exportDictionary(language, "projects")}
+              currentBackground={currentBackground}
+            />
+          </div>
+          <div onClick={() => handleNavbarClick("Contact")}>
+            <NavbarName
+              icon={<IoIosArrowForward />}
+              image={backgroundImage5}
+              newBackground={handleBackgroundChange}
+              newColor="white"
+              title={exportDictionary(language, "contact")}
+              currentBackground={currentBackground}
+            />
+          </div>
+        </nav>
 
-      {currentBackground !== backgroundImage2 ||
-      currentBackground !== backgroundImage1 ? (
-        <div
-          className="border"
-          style={{
-            transition: "1.5s ease",
-            top: borderTop,
-            color: color,
-            border: `${color} solid 10px`,
-          }}
-        >
-          <div className={`${isHidden ? "transparent" : "not-transparent"}`}>
-            {currentContent === "About" && <About />}
-            {currentContent === "Skills" && <Skills />}
-            {currentContent === "Projects" && <Projects />}
-            {currentContent === "Contact" && <Contact />}
+        <div className="border">
+          <div className="component-container">
+            {currentContent === "About" && <div style={{transition: "all 1s ease", opacity: isHidden}}><About lang={language} isHidden={isHidden} /></div>}
+            {currentContent === "Skills" && <div style={{transition: "all 1s ease", opacity: isHidden}}><Skills lang={language} isHidden={isHidden} /></div>}
+            {currentContent === "Projects" && <div style={{transition: "all 1s ease", opacity: isHidden}}><Projects lang={language} isHidden={isHidden} /></div>}
+            {currentContent === "Contact" && <div style={{transition: "all 1s ease", opacity: isHidden}}><Contact lang={language} isHidden={isHidden} /></div>}
           </div>
         </div>
-      ) : (
-        ""
-      )}
-    </div>
+      </section>
+    </div >
   );
 };
 

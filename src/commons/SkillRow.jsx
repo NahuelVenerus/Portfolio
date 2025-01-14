@@ -1,13 +1,27 @@
 import React from "react";
 import "../styles/skillsStyles.css";
+import { useState, useEffect } from "react";
 
 const SkillRow = ({ icon: IconComponent, name }) => {
-  const isScreenSizeLessThan500px = window.innerWidth < 500;
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 500);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 500);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup para evitar fugas de memoria
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className="skill-row">
       <IconComponent className="skill-icon" />
-      {isScreenSizeLessThan500px ? null : name}
+      {!isMobile && name}
     </div>
   );
 };
