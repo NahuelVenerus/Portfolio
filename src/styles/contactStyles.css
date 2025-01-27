@@ -112,13 +112,12 @@
   .icon-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10%;
-    margin-top: 30%;
+    gap: 1%;
     text-align: center;
   }
   
   .icon-wrapper {    
-    font-size: 8vw;
+    font-size: 2.5vw;
     transition: 0.5s ease;
     text-align: center;
   }
