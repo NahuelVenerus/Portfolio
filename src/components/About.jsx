@@ -1,11 +1,11 @@
 import "../styles/aboutStyles.css";
 import { exportDictionary } from "../dictionary";
 
-export const About = ({ lang: lang, isHidden: isHidden }) => {
+export const About = ({ lang: lang }) => {
   return (
-    <div style={{opacity: isHidden, transition: "all 1s ease" }}>
+    <>
       <h1 className="inner-title">{exportDictionary(lang, "about")}</h1>
-      <div className="inner-subtitle">
+      <div className="inner-subtitle scrollable">
           {lang === "ES" ? (
             <>
             <p>¡Hola! Bienvenido/a a mi portfolio.</p>
@@ -46,6 +46,6 @@ export const About = ({ lang: lang, isHidden: isHidden }) => {
           </>
       )}
       </div>
-    </div>
+    </>
   );
 };

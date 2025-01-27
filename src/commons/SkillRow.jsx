@@ -21,7 +21,7 @@ const SkillRow = ({ icon: IconComponent, name }) => {
   return (
     <div className="skill-row">
       <IconComponent className="skill-icon" />
-      {!isMobile && name}
+      {!isMobile && <span>{name}</span>}
     </div>
   );
 };
