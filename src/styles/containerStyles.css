@@ -1,24 +1,34 @@
-.content-container {
+.main-container {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 100vw;  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 75%;
+  max-height: 75%;
+  gap: 40px;
 }
 
-.border {
-  position: absolute;
+.content-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 70vh;
+  height: 85%;
+  max-height: 85%;
+  width: 100%;
+  overflow: hidden;
 }
 
-.component-container {
+.border {
   background-color: rgba(0, 0, 0, 0.6);
   border: 10px solid;
   border-radius: 20px;
+  height: 100%;
   width: 80%;
-  height: 80%
+}
+
+.component-container{
+  height: 100%;
 }
 
 .top-section {
@@ -81,4 +91,23 @@ padding-left: 5%;
   color: pink;
   font-size: 2.3em;
   padding-left: 5.2%;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .top-section{
+    padding: 40px 20px 0 0;
+  }
+
+    .subtitle {
+    font-size: 1.7em;
+  }
+
+  .language-change {
+    margin-right: 5px;
+    width: 120px;
+  }
+  .language-change span {
+    font-size: 7vw;
+  }
 }

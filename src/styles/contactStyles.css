@@ -2,16 +2,23 @@
 .icon-container {
   display: flex;
   justify-content: center;
-  margin-top: 12%;
+  align-items: center;
+  gap: 80px;
+  height: 70%;
 }
 
 .icon-wrapper {
-  margin: 0 2vw;
-  font-size: 5vw;
-  text-align: center;
-  display: inline-block;
-  transform-origin: bottom;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   transition: 0.5s ease;
+  text-decoration: none;
+  gap: 15px;
+}
+
+.icon-wrapper span {
+  font-size: 2em;
 }
 
 .icon-wrapper:hover {
@@ -58,7 +65,6 @@
 }
 
 .gmail-icon {
-  max-width: 100%;
   height: auto;
 }
 
@@ -118,7 +124,11 @@
   }
 
   .contact-icon {
-    font-size: 10vw;
+    font-size: 12vw;
     transition: transform 0.5s ease;
+  }
+
+  .gmail-icon {
+    height: 50px;
   }
 }
