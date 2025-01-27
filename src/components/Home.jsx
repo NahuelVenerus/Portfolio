@@ -64,7 +64,7 @@ const BackgroundChanger = () => {
       handleBackgroundChange(backgroundImage1);
       setTop("85%");
       setSubtitleInvisibility(1)
-      setTimeout(() => setCurrentContent(""), 1000);
+      setTimeout(() => setCurrentContent(""), 500);
     }
   };
 

@@ -6,12 +6,15 @@
 }
 
 .inner-subtitle {
-  font-size: 1.4em;
+  font-size: 1.5vw;
   padding: 0 50px;
 }
 
 .scrollable{
-  height: 80%;
+  overflow-y: auto;
+  scrollbar-color: #E57373 black;
+  margin: 0 10px 0 0;
+  height: 80%
 }
 
 @media screen and (max-width: 1000px) {
