@@ -67,48 +67,39 @@ const BackgroundChanger = () => {
       setTimeout(() => setCurrentContent(""), 500);
     }
   };
-
-  const changeToSpanish = () => {
-    if (language !== "ES") {
-      setIsHidden(0);
-      setIsNavbarHidden(0);
-      setSubtitleInvisibility(0);
-      setTimeout(() => {
-        setLanguage("ES");
-        setTimeout(() => {
-          setIsHidden(1);
-          setIsNavbarHidden(1);
-          if(currentContent === "") setSubtitleInvisibility(1);
-        }, 500);
-      }, 1000);
-    }
-  };
   
-  
-  
-  const changeToEnglish = () => {
-    if (language !== "EN") {
-      setIsHidden(0);
-      setIsNavbarHidden(0);
-      setSubtitleInvisibility(0);
-      setTimeout(() => {
-        setLanguage("EN");
-        setTimeout(() => {
-          setIsNavbarHidden(1);
-          setIsHidden(1);
-          if(currentContent === "") setSubtitleInvisibility(1);
-        }, 500);
-      }, 1000);
-    }
+  const changeLanguageUrl = (lang) => {
+    const currentUrl = new URL(window.location);
+    currentUrl.searchParams.set('lang', lang);
+    window.history.pushState({}, '', currentUrl);
+    updateLanguageContent(lang);
   };
 
+  const updateLanguageContent = (lang) => {
+    setIsHidden(0);
+    setIsNavbarHidden(0);
+    setSubtitleInvisibility(0);
+    setTimeout(() => {
+      setLanguage(lang !== language && language !== "EN" ? "EN" : "ES");
+      setTimeout(() => {
+        setIsHidden(1);
+        setIsNavbarHidden(1);
+        if (currentContent === "") setSubtitleInvisibility(1);
+      }, 500);
+    }, 1000);
+  }
+  
   useEffect(() => {
     dispatch(setColor("pink"));
   }, [dispatch]);
 
   useEffect(() => {
     loadImages();
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("lang") || "es";
+    setLanguage(lang);
   }, []);
+  
 
   return (
     <div
@@ -127,8 +118,8 @@ const BackgroundChanger = () => {
           <div className={currentBackground === backgroundImage1 ? "title transition" : "title-reduced transition"} style={{ color: color }}>NAHUEL VENERUS</div>
           <div className="language-change"
             style={{ transition: "all 1s ease", borderColor: color, color: color, transform: `scale(${currentBackground !== backgroundImage1 ? 0.8 : 1})` }}>
-            <span className={language === "ES" ? "language-change-selected" : ""} onClick={changeToSpanish} style={{ paddingRight: "10px", textShadow: language === "ES" ? `0 0 0.5px ${color}, 0 0 10px ${color}, 0 0 10px ${color}` : ""}}>ES</span> |
-            <span className={language === "EN" ? "language-change-selected" : ""} onClick={changeToEnglish} style={{ paddingLeft: "10px", textShadow: language === "EN" ? `0 0 0.5px ${color}, 0 0 10px ${color}, 0 0 10px ${color}` : ""}}>EN</span></div>
+            <span className={language === "ES" ? "language-change-selected" : ""} onClick={() => changeLanguageUrl("ES")} style={{ paddingRight: "10px", textShadow: language === "ES" ? `0 0 0.5px ${color}, 0 0 10px ${color}, 0 0 10px ${color}` : ""}}>ES</span> |
+            <span className={language === "EN" ? "language-change-selected" : ""} onClick={() => changeLanguageUrl("EN")} style={{ paddingLeft: "10px", textShadow: language === "EN" ? `0 0 0.5px ${color}, 0 0 10px ${color}, 0 0 10px ${color}` : ""}}>EN</span></div>
         </div>
         <div className="subtitle transition" style={{ opacity: subtitleInvisibility }}>{exportDictionary(language, "subtitle")}</div>
       </div>
