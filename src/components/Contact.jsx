@@ -56,8 +56,7 @@ export const Contact = ({ lang: lang }) => {
           </span>
         </a>
         <a className="icon-wrapper resume"
-          href={lang === "ES" ?
-            "https://nahuelvenerus.my.canva.site/nahuel-venerus" : "https://nahuelvenerus.my.canva.site/resume-nahuel-venerus"}
+          href={lang === "ES" ? "https://nahuelvenerus.my.canva.site/nahuel-venerus" : "https://nahuelvenerus.my.canva.site/resume-nahuel-venerus"}
           target="_blank"
           rel="noreferrer"
         >
