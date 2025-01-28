@@ -57,9 +57,7 @@ export const Contact = ({ lang: lang }) => {
         </a>
         <a className="icon-wrapper resume"
           href={lang === "ES" ?
-            "https://www.canva.com/design/DAFtC0ZPX7c/d2NPBcX5C4DrM2uXFSVPgw/view?website#1:espa-ol"
-            :
-            "https://www.canva.com/design/DAFtC0ZPX7c/d2NPBcX5C4DrM2uXFSVPgw/view?website#1:english"}
+            "https://nahuelvenerus.my.canva.site/nahuel-venerus" : "https://nahuelvenerus.my.canva.site/resume-nahuel-venerus"}
           target="_blank"
           rel="noreferrer"
         >
