@@ -1,7 +1,7 @@
 import "../styles/aboutStyles.css";
 import { exportDictionary } from "../dictionary";
 
-export const About = ({ lang: lang }) => {
+export const About = ({ lang, isHidden }) => {
   return (
     <>
       <h1 className="inner-title">{exportDictionary(lang, "about")}</h1>

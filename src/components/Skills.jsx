@@ -8,7 +8,7 @@ import "../styles/aboutStyles.css";
 import { exportDictionary } from "../dictionary"
 import { SkillColumn } from "../commons/SkillColumn";
 
-export const Skills = ({ lang: lang }) => {
+export const Skills = ({ lang, isHidden }) => {
   const column1 = [
     {icon: TbBrandReactNative, name: "React-Native"}, 
     {icon: TbBrandRedux, name: "Redux"}, 
