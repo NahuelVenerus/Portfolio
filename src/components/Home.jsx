@@ -80,7 +80,7 @@ const BackgroundChanger = () => {
     setIsNavbarHidden(0);
     setSubtitleInvisibility(0);
     setTimeout(() => {
-      setLanguage(lang !== language && language !== "EN" ? "EN" : "ES");
+      setLanguage(lang || "ES");
       setTimeout(() => {
         setIsHidden(1);
         setIsNavbarHidden(1);
@@ -88,18 +88,17 @@ const BackgroundChanger = () => {
       }, 500);
     }, 1000);
   }
-  
-  useEffect(() => {
-    dispatch(setColor("pink"));
-  }, [dispatch]);
 
   useEffect(() => {
     loadImages();
     const params = new URLSearchParams(window.location.search);
-    const lang = params.get("lang") || "es";
+    const lang = params.get("lang")?.toUpperCase() || "ES"; 
     setLanguage(lang);
   }, []);
   
+  useEffect(() => {
+    dispatch(setColor("pink"));
+  }, [dispatch]);
 
   return (
     <div
