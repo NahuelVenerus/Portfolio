@@ -8,7 +8,7 @@ import "../styles/aboutStyles.css";
 import { exportDictionary } from "../dictionary"
 import { SkillColumn } from "../commons/SkillColumn";
 
-export const Skills = ({ lang: lang, isHidden: isHidden }) => {
+export const Skills = ({ lang: lang }) => {
   const column1 = [
     {icon: TbBrandReactNative, name: "React-Native"}, 
     {icon: TbBrandRedux, name: "Redux"}, 
@@ -32,7 +32,7 @@ export const Skills = ({ lang: lang, isHidden: isHidden }) => {
     {icon: DiScrum, name: "SCRUM"}
   ]
   return (
-    <div style={{ opacity: isHidden, transition: "all 1s ease" }}>
+    <>
       <h1 className="inner-title">{exportDictionary(lang, "skills")}</h1>
       <div className="inner-subtitle">
         <div className="skills-container">
@@ -41,6 +41,6 @@ export const Skills = ({ lang: lang, isHidden: isHidden }) => {
           <SkillColumn title={exportDictionary(lang, "techs")} techList={column3}/>
         </div>
       </div>
-    </div>
+    </>
   );
 };

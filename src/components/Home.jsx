@@ -64,7 +64,7 @@ const BackgroundChanger = () => {
       handleBackgroundChange(backgroundImage1);
       setTop("85%");
       setSubtitleInvisibility(1)
-      setTimeout(() => setCurrentContent(""), 1000);
+      setTimeout(() => setCurrentContent(""), 500);
     }
   };
 
@@ -132,7 +132,7 @@ const BackgroundChanger = () => {
         </div>
         <div className="subtitle transition" style={{ opacity: subtitleInvisibility }}>{exportDictionary(language, "subtitle")}</div>
       </div>
-      <section className="content-container transition" style={{ top: top, color: color }}>
+      <section className="main-container transition" style={{ top: top, color: color }}>
         <nav  style={{opacity: isNavbarHidden}} className="navbar transition">
           <div onClick={() => handleNavbarClick("About")}>
             <NavbarName
@@ -176,12 +176,12 @@ const BackgroundChanger = () => {
           </div>
         </nav>
 
-        <div className="border">
-          <div className="component-container">
-            {currentContent === "About" && <div style={{transition: "all 1s ease", opacity: isHidden}}><About lang={language} isHidden={isHidden} /></div>}
-            {currentContent === "Skills" && <div style={{transition: "all 1s ease", opacity: isHidden}}><Skills lang={language} isHidden={isHidden} /></div>}
-            {currentContent === "Projects" && <div style={{transition: "all 1s ease", opacity: isHidden}}><Projects lang={language} isHidden={isHidden} /></div>}
-            {currentContent === "Contact" && <div style={{transition: "all 1s ease", opacity: isHidden}}><Contact lang={language} isHidden={isHidden} /></div>}
+        <div className="content-container">
+          <div className="border">
+          {currentContent === "About" && <div className="component-container" style={{transition: "all 1s ease", opacity: isHidden}}><About lang={language}/></div>}
+            {currentContent === "Skills" && <div className="component-container" style={{transition: "all 1s ease", opacity: isHidden}}><Skills lang={language}/></div>}
+            {currentContent === "Projects" && <div className="component-container" style={{transition: "all 1s ease", opacity: isHidden}}><Projects lang={language}/></div>}
+            {currentContent === "Contact" && <div className="component-container" style={{transition: "all 1s ease", opacity: isHidden}}><Contact lang={language}/></div>}
           </div>
         </div>
       </section>
