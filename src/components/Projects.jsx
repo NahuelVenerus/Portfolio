@@ -13,7 +13,7 @@ const GeekCentralStore = require("../assets/GeekCentralStore.png");
 const ClubDelPlanMobile = require("../assets/ClubDelPlanMobile.png");
 const GeekCentralStoreMobile = require("../assets/GeekCentralStoreMobile.png");
 
-export const Projects = ({lang: lang, isHidden: isHidden}) => {
+export const Projects = ({lang, isHidden}) => {
   const [isMobile, setIsMobile] = useState(false);
 
   const handleResize = () => {
