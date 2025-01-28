@@ -10,7 +10,7 @@ import Gmail_Logo from "../assets/Gmail_Logo.svg";
 import Swal from "sweetalert2";
 import { exportDictionary } from "../dictionary";
 
-export const Contact = ({ lang: lang }) => {
+export const Contact = ({lang, isHidden}) => {
   const copyToClipboard = (isMail) => {
     let toShare = "nahuelvenerus@gmail.com";
     let color = "red";
