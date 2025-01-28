@@ -21,84 +21,64 @@ export const Contact = ({lang, isHidden}) => {
     navigator.clipboard.writeText(toShare);
     Swal.fire({
       icon: "success",
-      title: `Copiado </br><span style="color: ${color};">${toShare}</span></br> correctamente al portapapeles!`,
-      confirmButtonText: `Genial!`,
+      title: `${exportDictionary(lang, "mailText1")} </br><div style="color: ${color};"><br>${toShare}</br></div></br> ${exportDictionary(lang, "mailText2")}`,
+      confirmButtonText: exportDictionary(lang, "great"),
     });
   };
 
   return (
-    <div style={{opacity: isHidden, transition: "all 1s ease" }}>
+    <>
       <h1 className="inner-title">{exportDictionary(lang, "contact")}</h1>
       <div className="icon-container" >
-        <span>
-          <a
-            href="https://www.linkedin.com/in/nahuel-venerus/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="icon-wrapper linkedin">
-              <AiFillLinkedin className="contact-icon" />
-              <div className="icon-text">LinkedIn</div>
-            </div>
-          </a>
-        </span>
-        <span>
-          <div
-            className="icon-wrapper gmail"
-            onClick={() => copyToClipboard(true)}
-          >
-            <img alt="gmail" src={Gmail_Logo} className="gmail-icon" />
-            <div className="icon-text">Gmail</div>
-          </div>
-        </span>
-        <span>
-          <a
-            href="https://www.github.com/NahuelVenerus"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="icon-wrapper github">
-              <AiFillGithub className="contact-icon" />
-              <div style={{ color: "white" }} className="icon-text">
-                Github
-              </div>
-            </div>
-          </a>
-        </span>
-        <span>
-          <a
-            href="https://www.canva.com/design/DAFtC0ZPX7c/d2NPBcX5C4DrM2uXFSVPgw/view?website#1:espa-ol"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="icon-wrapper resume">
-              <MdContactPage className="contact-icon" />
-              <div className="icon-text">CV</div>
-            </div>
-          </a>
-        </span>
-        <span>
-          <a
-            href="https://wa.me/5491136441633"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="icon-wrapper whatsapp">
-              <MdOutlineWhatsapp className="contact-icon" />
-              <div className="icon-text">WhatsApp</div>
-            </div>
-          </a>
-        </span>
-        <span>
-          <div
-            className="icon-wrapper phone"
-            onClick={() => copyToClipboard(false)}
-          >
-            <MdOutlinePhone className="contact-icon" />
-            <div className="icon-text">Número</div>
-          </div>
-        </span>
+        <a className="icon-wrapper linkedin"
+          href="https://www.linkedin.com/in/nahuel-venerus/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiFillLinkedin className="contact-icon" />
+          <span className="icon-text">LinkedIn</span>
+        </a>
+        <div
+          className="icon-wrapper gmail"
+          onClick={() => copyToClipboard(true)}
+        >
+          <img alt="gmail" src={Gmail_Logo} className="gmail-icon" />
+          <span className="icon-text">Gmail</span>
+        </div>
+        <a className="icon-wrapper github"
+          href="https://www.github.com/NahuelVenerus"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiFillGithub className="contact-icon" />
+          <span style={{ color: "white" }} className="icon-text">
+            Github
+          </span>
+        </a>
+        <a className="icon-wrapper resume"
+          href={lang === "ES" ? "https://nahuelvenerus.my.canva.site/nahuel-venerus" : "https://nahuelvenerus.my.canva.site/resume-nahuel-venerus"}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <MdContactPage className="contact-icon" />
+          <span className="icon-text">CV</span>
+        </a>
+        <a className="icon-wrapper whatsapp"
+          href="https://wa.me/5491136441633"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <MdOutlineWhatsapp className="contact-icon" />
+          <span className="icon-text">WhatsApp</span>
+        </a>
+        <div
+          className="icon-wrapper phone"
+          onClick={() => copyToClipboard(false)}
+        >
+          <MdOutlinePhone className="contact-icon" />
+          <span className="icon-text">{exportDictionary(lang, "number")}</span>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

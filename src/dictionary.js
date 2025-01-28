@@ -5,7 +5,11 @@ export const dictionary = {
         skills: "Conocimientos",
         projects: "Proyectos",
         contact: "Contactame",
-        techs: "Tecnologías"
+        techs: "Otros",
+        mailText1: "¡Copiado ",
+        mailText2: " correctamente!",
+        number: "Número",
+        great: "¡Genial!",
     },
     EN: {
         subtitle: "Systems Analyst",
@@ -13,7 +17,11 @@ export const dictionary = {
         skills: "skills",
         projects: "Projects",
         contact: "Contact me",
-        techs: "Technologies"
+        techs: "Other",
+        mailText1: "Copied ",
+        mailText2: " correctly!",
+        number: "Phone Number",
+        great: "Great!",
     }
 };
 
