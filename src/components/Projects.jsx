@@ -33,7 +33,7 @@ export const Projects = ({lang: lang }) => {
     {
       image: isMobile ? ClubDelPlanMobile : ClubDelPlan,
       name: "El Club del Plan",
-      link: "https://elclubdelplan.netlify.app/",
+      link: "https://github.com/alba-97/ceibo-back",
     },
     {
       image: isMobile ? GeekCentralStoreMobile : GeekCentralStore,
